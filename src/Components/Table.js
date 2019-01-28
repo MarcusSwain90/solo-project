@@ -28,15 +28,17 @@ const TableSpace = styled.td`
 
 const TableStyle = styled.table`
   border-collapse: collapse;
-  border-spacing: 10;
+  border-spacing: 5;
   width: 30%;
   border-top: 2px solid whitesmoke;
   position: absolute;
-  top: 380px;
+  top: 350px;
   left: 10px;
-  bottom: 150px;
+  bottom: 90px;
   `
-const ActivitiesHeader = styled.h1`
+const ActivitiesHeader = styled.h3`
+  @import url('https://fonts.googleapis.com/css?family=Quicksand:300');
+  font-family: 'Quicksand', sans-serif;
   margin-right:90px;
 `
 
@@ -70,11 +72,10 @@ export default class Table extends Component {
     if(activitiesList){
     return (
       <div>
-        
           <TableStyle>
             <thead>
         <caption><div className="container">
-        <label class="switch">
+        <label class="switch"><ActivitiesHeader>Activities(12)</ActivitiesHeader>
         <input type="checkbox"/>
         <span class="slider"></span>
         </label>
