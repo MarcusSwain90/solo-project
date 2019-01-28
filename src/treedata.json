@@ -1,0 +1,32 @@
+{
+  "activitiesVisuals": {
+      "source": "Workstation",
+      "children": [{
+          "id": "ec1d00151369480d9dbcf9f4b56f3757",
+          "displayName": "Fedora-Workstation",
+          "direction": "both",
+          "numOfDevices": 17
+      }, {
+          "id": "18f356d3a5574f64ba8bd65d527365e5",
+          "displayName": "Unknown",
+          "direction": "both",
+          "numOfDevices": 13
+      }, {
+          "id": "699dc63f07794838a7e963f03e476592",
+          "displayName": "Ubuntu-Workstation",
+          "direction": "both",
+          "numOfDevices": 12
+      }, {
+          "id": "e3161ba8e6c44b7bbceded0c4d578b67",
+          "displayName": "RedHat-Workstation",
+          "direction": "both",
+          "numOfDevices": 11
+      }, {
+          "id": "e5fea688da2a4fa492a8d52165cf953a",
+          "displayName": "Windows10-Workstation",
+          "direction": "both",
+          "numOfDevices": 7
+      }],
+      "totalNumOfGroups": 24
+  }
+}

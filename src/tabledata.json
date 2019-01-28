@@ -1,0 +1,38 @@
+{
+    "activitiesDetails": {
+        "direction": "inbound",
+        "activitiesList": [{
+            "port": 554,
+            "protocol": "TCP",
+            "hits": 51
+        }, {
+            "port": 80,
+            "protocol": "TCP",
+            "hits": 41
+        }, {
+            "port": 636,
+            "protocol": "TCP",
+            "hits": 38
+        }, {
+            "port": 411,
+            "protocol": "TCP",
+            "hits": 37
+        }, {
+            "port": 443,
+            "protocol": "UDP",
+            "hits": 32
+        },
+        {
+            "port": 443,
+            "protocol": "UDP",
+            "hits": 32
+        },
+        {
+            "port": 443,
+            "protocol": "UDP",
+            "hits": 32
+        }
+    ],
+        "totalCount": 5
+    }
+  }
