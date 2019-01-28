@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Tree from 'react-d3-tree';
 import {withFauxDOM} from 'react-faux-dom'
 import styled from 'styled-components';
-import { svg, select } from 'd3';
+import {selectAll} from 'd3';
 
 const TrafficFlowTitle = styled.h4`
     @import url('https://fonts.googleapis.com/css?family=Quicksand:300');
@@ -20,12 +20,9 @@ const SubTitles = styled.p`
    margin-left: 660px;
    bottom: 80px;
   `
-
-  
-
 const debugData = [
   {
-    name: 'MRI',
+    name: 'Workstation',
     nodeSvgShape: {
       shape: 'rect',
       shapeProps: {
@@ -36,14 +33,12 @@ const debugData = [
             fill: 'steelblue', 
       }
     },
-    textLayout: {
-      textAnchor: 'start',
-      x: -999, 
-      y:55
-    },
     children: [
       {
-        name: '',
+        name: 'Fedora-Workstation',
+        attributes: {
+          numOfDevices: 17,
+        },
         nodeSvgShape: {
           shape: 'rect',
           shapeProps: {
@@ -51,12 +46,15 @@ const debugData = [
            height: "60px",
            x: -1,
            y: -10,
-           fill: "purple"
+           fill: "whitesmoke"
           },
         }
       },
       {
-        name: '',
+        name: 'Unknown',
+        attributes: {
+          numOfDevices: 13,
+        },
         nodeSvgShape: {
           shape: 'rect',
           shapeProps: {
@@ -69,7 +67,10 @@ const debugData = [
         }
       },
       {
-      name: '',
+      name: 'Ubuntu-Workstation',
+      attributes: {
+        numOfDevices: 12,
+      },
         nodeSvgShape: {
           shape: 'rect',
           shapeProps: {
@@ -82,10 +83,16 @@ const debugData = [
         }
       },
       {
-        name: '',
+        name: 'Windows10-Workstation',
+        attributes: {
+          numOfDevices: 11,
+        },
       },
       {
-        name: '',
+        name: 'RedHat-Workstation',
+        attributes: {
+          numOfDevices: 7,
+        },
           nodeSvgShape: {
             shape: 'rect',
             shapeProps: {
@@ -111,15 +118,12 @@ const debugData = [
       fill: 'grey'
     }
   }
-  
-  // const containerStyles = {
-  //   width: '100%',
-  //   height: '100vh',
-  // }
+
+  console.log(debugData.name)
   
   class RightQuandrantTree extends Component {
     state = {}
-  
+
     componentDidMount() {
       const dimensions = this.treeContainer.getBoundingClientRect();
       this.setState({
@@ -129,43 +133,18 @@ const debugData = [
         }
       });
     }
+
+    componentDidUpdate() {
+      selectAll("path").select(function(d, index ) {
+        if (debugData[0].children[index]){
+          this.style["strokeWidth"] = debugData[0].children[index].attributes.numOfDevices
+          console.log(debugData[0].children[index].attributes.numOfDevices)
+        }
+        return this;
+      });
+    }
   
     render() {
-
-      const strokeWidthFunction = () => {
-        return 7;
-      };
-
-      const svgStyleObject = {
-        stroke: 'black',
-        strokeWidth: 1,
-      }
-
-      const customStyle = {
-        links: svgStyleObject
-      }
-
-      const myPathFunc = function (linkData, orientation) {
-        const straight = svg
-          .line()
-          .interpolate('basis')
-          .x(d => d.x)
-          .y(d => d.y);
-
-        let data = [
-          { x: linkData.source.x, y: linkData.source.y },
-          { x: linkData.target.x, y: linkData.target.y },
-        ];
-
-        if (orientation === 'horizontal') {
-          data = [
-            { x: linkData.source.y, y: linkData.source.x },
-            { x: linkData.target.y, y: linkData.target.x },
-          ];
-        }
-
-        return straight(data);
-      }
       
       return (
         <div id="tree-container" style={{borderLeft:"3px solid whitesmoke",borderTop:'3px solid whitesmoke', marginLeft:'550px', borderRight:'55px'}}>
@@ -179,7 +158,7 @@ const debugData = [
             nodeSvgShape={svgSquare}
             zoomable={false}
             depthFactor={600}
-            styles={customStyle}
+            // styles={customStyle}
           />
         </div>
         </div>

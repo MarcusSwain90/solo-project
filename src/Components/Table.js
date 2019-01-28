@@ -42,6 +42,12 @@ const ActivitiesHeader = styled.h3`
   margin-right:90px;
 `
 
+const AboveTableHeader = styled.h5`
+  @import url('https://fonts.googleapis.com/css?family=Quicksand:300');
+  font-family: 'Quicksand', sans-serif;
+  display: inline-flex;
+`
+
 export default class Table extends Component {
   constructor(props){
     super(props)
@@ -75,9 +81,9 @@ export default class Table extends Component {
           <TableStyle>
             <thead>
         <caption><div className="container">
-        <label class="switch"><ActivitiesHeader>Activities(12)</ActivitiesHeader>
+        <label className="switch"><ActivitiesHeader>Activities(12)</ActivitiesHeader>
         <input type="checkbox"/>
-        <span class="slider"></span>
+        <span className="slider"></span>
         </label>
         </div></caption>
               <tr>
