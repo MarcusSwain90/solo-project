@@ -25,6 +25,13 @@ class App extends Component {
          <div className='data'><span>Subclassification: <span className='blue-text'>10</span></span></div>
          <div className='data'LeftTitle><span>Endpoint Members: <span className='blue-text'>35</span></span></div>
          </div>
+         <hr />
+        <div className="w-25 mt-5 border-bottom pb-3" id="activities">
+            <p class="lead mb-3">View Activities Between</p>
+            <span>MRI Machines</span><br />
+            <small>and</small><br />
+            <span>18 classifications</span>
+        </div>
          </div>
          <div className="RightContent"><span>Date from: <span className='blue-text'><i className="far fa-clock"></i> 1 Hour: Feb 23 10:18am - Feb 23, 11:18 am </span></span></div>
           </div>

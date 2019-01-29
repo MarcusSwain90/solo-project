@@ -46,6 +46,8 @@ const AboveTableHeader = styled.h5`
   @import url('https://fonts.googleapis.com/css?family=Quicksand:300');
   font-family: 'Quicksand', sans-serif;
   display: inline-flex;
+  border-color: red;
+  
 `
 
 export default class Table extends Component {
@@ -77,7 +79,8 @@ export default class Table extends Component {
     const { activitiesList } = data.activitiesDetails;
     if(activitiesList){
     return (
-      <div>
+      <div className='activities-container'>
+      <AboveTableHeader></AboveTableHeader>
           <TableStyle>
             <thead>
         <caption><div className="container">

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Tree from 'react-d3-tree';
 import {withFauxDOM} from 'react-faux-dom'
 import styled from 'styled-components';
-import {selectAll} from 'd3';
+import { selectAll, transition, duration } from 'd3';
+
+
 
 const TrafficFlowTitle = styled.h4`
     @import url('https://fonts.googleapis.com/css?family=Quicksand:300');
@@ -17,12 +19,13 @@ const SubTitles = styled.p`
    @import url('https://fonts.googleapis.com/css?family=Quicksand:300');
    font-family: 'Quicksand', sans-serif; 
    display: inline-block;
-   margin-left: 660px;
+   margin-left: 680px;
    bottom: 80px;
   `
 const debugData = [
   {
     name: 'Workstation',
+    color: "red",
     nodeSvgShape: {
       shape: 'rect',
       shapeProps: {
@@ -42,10 +45,10 @@ const debugData = [
         nodeSvgShape: {
           shape: 'rect',
           shapeProps: {
-           width: "170px",
-           height: "60px",
+           width: "200px",
+           height: "80px",
            x: -1,
-           y: -10,
+           y: -21,
            fill: "whitesmoke"
           },
         }
@@ -58,10 +61,10 @@ const debugData = [
         nodeSvgShape: {
           shape: 'rect',
           shapeProps: {
-           width: "170px",
-           height: "60px",
+           width: "200px",
+           height: "80px",
            x: -1,
-           y: -10,
+           y: -21,
            fill: "green"
           }
         }
@@ -74,10 +77,10 @@ const debugData = [
         nodeSvgShape: {
           shape: 'rect',
           shapeProps: {
-           width: "170px",
-           height: "60px",
+           width: "200px",
+           height: "80px",
            x: -1,
-           y: -10,
+           y: -23,
            fill: "yellow"
           }
         }
@@ -96,10 +99,10 @@ const debugData = [
           nodeSvgShape: {
             shape: 'rect',
             shapeProps: {
-             width: "170px",
-             height: "60px",
+             width: "200px",
+             height: "80px",
              x: -1,
-             y: -10,
+             y: -21,
              fill: "beige"
             }
           }
@@ -111,15 +114,23 @@ const debugData = [
   const svgSquare = {
     shape: 'rect',
     shapeProps: {
-      width: "170px",
-      height: "60px",
+      width: "200px",
+      height: "80px",
       x: -1,
-      y: -10,
+      y: -21,
       fill: 'grey'
     }
   }
 
-  console.log(debugData.name)
+  const svgStyleObject = {
+    stroke: 'steelblue',
+    border: '1px solid transparent'
+  }
+
+  const customStyle = {
+    links: svgStyleObject,
+    nodes: svgStyleObject
+  }
   
   class RightQuandrantTree extends Component {
     state = {}
@@ -129,7 +140,7 @@ const debugData = [
       this.setState({
         translate: {
           x: dimensions.width / 4,
-          y: dimensions.height / 3
+          y: dimensions.height / 2.8
         }
       });
     }
@@ -138,7 +149,6 @@ const debugData = [
       selectAll("path").select(function(d, index ) {
         if (debugData[0].children[index]){
           this.style["strokeWidth"] = debugData[0].children[index].attributes.numOfDevices
-          console.log(debugData[0].children[index].attributes.numOfDevices)
         }
         return this;
       });
@@ -150,7 +160,7 @@ const debugData = [
         <div id="tree-container" style={{borderLeft:"3px solid whitesmoke",borderTop:'3px solid whitesmoke', marginLeft:'550px', borderRight:'55px'}}>
         <TrafficFlowTitle>Traffic Flow</TrafficFlowTitle>
         <SubTitles>classifications</SubTitles>
-        <div style={{width: '100%',height: '100vh', marginLeft:"-2px" }}ref={tc => (this.treeContainer = tc)}>
+        <div style={{width: '100%',height: '190vh', marginLeft:"-2px" }}ref={tc => (this.treeContainer = tc)}>
           <Tree 
             data={debugData} 
             translate={this.state.translate} 
@@ -158,7 +168,7 @@ const debugData = [
             nodeSvgShape={svgSquare}
             zoomable={false}
             depthFactor={600}
-            // styles={customStyle}
+            styles={customStyle}
           />
         </div>
         </div>
